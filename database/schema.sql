@@ -1,0 +1,1 @@
+-- MySQL schema for Baumarkt-App
