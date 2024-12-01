@@ -27,11 +27,14 @@ baumarkt-app/
 │   │   └── assets/
 │   │       ├── css/
 │   │       │   └── styles.css
-│   │       └── images/
+│   │       ├── images/
+│   │       └── js/
+│   │           └── scripts.js
 │   └── src/
 │       ├── App.js
 │       └── index.js
 ├── database/
+│       ├── insert_products.sql
 │       └── schema.sql
 └── backend/
     ├── api/

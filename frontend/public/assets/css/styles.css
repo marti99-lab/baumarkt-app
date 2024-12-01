@@ -1,4 +1,4 @@
-/* Allgemeine Stile */
+/* General Styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -28,10 +28,6 @@ nav ul {
     gap: 15px;
 }
 
-nav ul li {
-    display: inline;
-}
-
 nav ul li a {
     text-decoration: none;
     color: #91dbfd;
@@ -46,6 +42,7 @@ nav ul li a:hover {
     color: #0069d9;
 }
 
+/* Main Sections */
 main {
     padding: 20px;
     text-align: center;
@@ -56,6 +53,7 @@ main section {
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 main section h2 {
@@ -68,13 +66,66 @@ main section p {
     font-size: 1.1rem;
 }
 
+/* Product Cards */
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    text-align: left;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+    color: #0069d9;
+}
+
+.product-card p {
+    margin: 4px 0;
+}
+
+.product-card button {
+    background-color: #0069d9;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-card button:hover {
+    background-color: #004a9e;
+    transform: scale(1.05);
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.8);
+    color: #91dbfd;
+    font-size: 0.9rem;
     position: fixed;
     bottom: 0;
     width: 100%;
-    color: #91dbfd;
-    font-size: 0.9rem;
 }

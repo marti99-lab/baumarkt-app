@@ -14,25 +14,20 @@ function App() {
                 }
                 return response.json();
             })
-            .then((data) => setProducts(data))
+            .then((data) => {
+                setProducts(data);
+                const discounted = data.filter((product) => product.discount > 0);
+                setDiscounts(discounted);
+            })
             .catch((error) => console.error("Error fetching products:", error));
     }, []);
 
-    // Fetch wishlist (mock for now)
-    useEffect(() => {
-        setWishlist([
-            { id: 1, name: "Bohrmaschine", category: "Werkzeuge" },
-            { id: 2, name: "Schraubenzieher", category: "Werkzeuge" },
-        ]);
-    }, []);
-
-    // Fetch discounts (mock for now)
-    useEffect(() => {
-        setDiscounts([
-            { id: 1, name: "Hochdruckreiniger", price: "120.00", discount: 20 },
-            { id: 2, name: "Holzschutzmittel", price: "30.00", discount: 15 },
-        ]);
-    }, []);
+    // Add to wishlist
+    const addToWishlist = (product) => {
+        if (!wishlist.find((item) => item.id === product.id)) {
+            setWishlist([...wishlist, product]);
+        }
+    };
 
     return (
         <div>
@@ -50,14 +45,20 @@ function App() {
                 <section id="produkte">
                     <h2>Produkte</h2>
                     {products.length > 0 ? (
-                        <ul>
+                        <div id="product-list">
                             {products.map((product) => (
-                                <li key={product.id}>
-                                    <strong>{product.name}</strong> - {product.price}€<br />
-                                    Kategorie: {product.category} | Verfügbarkeit: {product.availability} | Rabatt: {product.discount}%
-                                </li>
+                                <div className="product-card" key={product.id}>
+                                    <h3>{product.name}</h3>
+                                    <p>Kategorie: {product.category}</p>
+                                    <p>Preis: {product.price}€</p>
+                                    <p>Verfügbarkeit: {product.availability}</p>
+                                    {product.discount > 0 && <p>Rabatt: {product.discount}%</p>}
+                                    <button onClick={() => addToWishlist(product)}>
+                                        Zur Wunschliste hinzufügen
+                                    </button>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     ) : (
                         <p>Produkte werden geladen...</p>
                     )}
@@ -82,12 +83,12 @@ function App() {
                         <ul>
                             {discounts.map((item) => (
                                 <li key={item.id}>
-                                    {item.name} - {item.price}€ (-{item.discount}%)
+                                    <strong>{item.name}</strong> - {item.price}€ (-{item.discount}%)
                                 </li>
                             ))}
                         </ul>
                     ) : (
-                        <p>Keine Rabattaktionen verfügbar.</p>
+                        <p>Keine aktuellen Rabattaktionen verfügbar.</p>
                     )}
                 </section>
             </main>
