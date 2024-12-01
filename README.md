@@ -16,3 +16,31 @@ Anforderungen für den Baumarkt-Shop
     Backend: PHP.
     Datenbank: MySQL 
     Styling: CSS, Bootstrap,
+
+# app structur
+```
+baumarkt-app/
+│
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   └── assets/
+│   │       ├── css/
+│   │       │   └── styles.css
+│   │       └── images/
+│   └── src/
+│       ├── App.js
+│       └── index.js
+├── database/
+│       └── schema.sql
+└── backend/
+    ├── api/
+    │   └── products.php
+    ├── config/
+    │   └── db.php
+    ├── controllers/
+    │   └── ProductController.php
+    ├── models/
+    │   └── Product.php
+    └── api/
+        └── index.php

@@ -1,0 +1,80 @@
+/* Allgemeine Stile */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #91dbfd, #0069d9);
+    color: #fff;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #91dbfd;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background: #91dbfd;
+    color: #0069d9;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+main section {
+    margin: 40px 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+main section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #91dbfd;
+}
+
+main section p {
+    font-size: 1.1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #91dbfd;
+    font-size: 0.9rem;
+}
