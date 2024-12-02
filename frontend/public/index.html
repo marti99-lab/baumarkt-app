@@ -19,21 +19,24 @@
         </nav>
     </header>
     <main>
+        <section id="categories">
+            <h2>Kategorien</h2>
+            <div id="category-buttons">
+                <button class="category-button active" data-category="Werkzeuge">Werkzeuge</button>
+                <button class="category-button" data-category="Garten">Garten</button>
+                <button class="category-button" data-category="Sanitär">Sanitär</button>
+                <button class="category-button" data-category="Elektro">Elektro</button>
+                <button class="category-button" data-category="Baustoffe">Baustoffe</button>
+            </div>
+        </section>
         <section id="produkte">
             <h2>Produkte</h2>
-            <p>Entdecken Sie unsere große Auswahl an Baumarkt-Produkten.</p>
-        </section>
-        <section id="wunschliste">
-            <h2>Wunschliste</h2>
-            <p>Fügen Sie Produkte Ihrer persönlichen Wunschliste hinzu.</p>
-        </section>
-        <section id="rabatte">
-            <h2>Rabattaktionen</h2>
-            <p>Aktuelle Rabatte und Sonderangebote.</p>
+            <p class="produkte-description">Unsere Produkte: Einfach Kategorie auswählen und stöbern!</p>
+            <div id="product-list"></div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Martin Rübner. All rights reserved. </p>
+        <p>&copy; 2024 Martin Rübner. All rights reserved.</p>
     </footer>
 </body>
 </html>

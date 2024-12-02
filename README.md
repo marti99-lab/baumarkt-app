@@ -12,10 +12,10 @@ Anforderungen für den Baumarkt-Shop
 
 2. Technologieauswahl
 
-    Frontend: React für dynamische Benutzeroberfläche.
-    Backend: PHP.
-    Datenbank: MySQL 
-    Styling: CSS, Bootstrap,
+  Frontend: PHP, HTML, and JavaScript for dynamic and interactive features.
+  Backend: PHP for server-side logic and API integration.
+  Datenbank: MySQL for data storage and retrieval.
+  Styling: CSS and Bootstrap for a responsive and visually appealing design.
 
 # app structur
 ```

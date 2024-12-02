@@ -4,10 +4,11 @@ function App() {
     const [products, setProducts] = useState([]);
     const [wishlist, setWishlist] = useState([]);
     const [discounts, setDiscounts] = useState([]);
+    const [filter, setFilter] = useState(""); // Filter state
 
     // Fetch products from the backend
     useEffect(() => {
-        fetch("http://localhost/backend/api/products.php")
+        fetch("http://localhost/backend/api/products.php") // Update URL if needed
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch products");
@@ -16,18 +17,26 @@ function App() {
             })
             .then((data) => {
                 setProducts(data);
-                const discounted = data.filter((product) => product.discount > 0);
-                setDiscounts(discounted);
+                setDiscounts(data.filter((product) => product.discount > 0));
             })
             .catch((error) => console.error("Error fetching products:", error));
     }, []);
 
-    // Add to wishlist
+    // Add a product to the wishlist
     const addToWishlist = (product) => {
         if (!wishlist.find((item) => item.id === product.id)) {
-            setWishlist([...wishlist, product]);
+            const updatedWishlist = [...wishlist, product];
+            setWishlist(updatedWishlist);
         }
     };
+
+    // Filter products by category or name
+    const filteredProducts = products.filter(
+        (product) =>
+            filter === "" ||
+            product.category.toLowerCase().includes(filter.toLowerCase()) ||
+            product.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
     return (
         <div>
@@ -42,17 +51,26 @@ function App() {
                 </nav>
             </header>
             <main>
+                {/* Produkte Section */}
                 <section id="produkte">
                     <h2>Produkte</h2>
-                    {products.length > 0 ? (
-                        <div id="product-list">
-                            {products.map((product) => (
+                    <input
+                        type="text"
+                        placeholder="Filter by category or name"
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                    />
+                    {filteredProducts.length > 0 ? (
+                        <div className="product-list">
+                            {filteredProducts.map((product) => (
                                 <div className="product-card" key={product.id}>
                                     <h3>{product.name}</h3>
                                     <p>Kategorie: {product.category}</p>
                                     <p>Preis: {product.price}€</p>
                                     <p>Verfügbarkeit: {product.availability}</p>
-                                    {product.discount > 0 && <p>Rabatt: {product.discount}%</p>}
+                                    {product.discount > 0 && (
+                                        <p>Rabatt: {product.discount}%</p>
+                                    )}
                                     <button onClick={() => addToWishlist(product)}>
                                         Zur Wunschliste hinzufügen
                                     </button>
@@ -60,9 +78,11 @@ function App() {
                             ))}
                         </div>
                     ) : (
-                        <p>Produkte werden geladen...</p>
+                        <p>Keine Produkte gefunden.</p>
                     )}
                 </section>
+
+                {/* Wunschliste Section */}
                 <section id="wunschliste">
                     <h2>Wunschliste</h2>
                     {wishlist.length > 0 ? (
@@ -77,6 +97,8 @@ function App() {
                         <p>Wunschliste ist leer.</p>
                     )}
                 </section>
+
+                {/* Rabattaktionen Section */}
                 <section id="rabatte">
                     <h2>Rabattaktionen</h2>
                     {discounts.length > 0 ? (
