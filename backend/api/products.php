@@ -6,11 +6,14 @@ $category = $_GET['category'] ?? null;
 
 try {
     if ($category) {
-        $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ?");
+        // Fetch products for the specified category
+        $stmt = $pdo->prepare("SELECT name, image, category, price, availability, discount FROM products WHERE category = ?");
         $stmt->execute([$category]);
     } else {
-        $stmt = $pdo->query("SELECT * FROM products");
+        // Fetch all products
+        $stmt = $pdo->query("SELECT name, image, category, price, availability, discount FROM products");
     }
+
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Ensure valid JSON output
@@ -20,4 +23,3 @@ try {
     echo json_encode(['error' => 'Failed to fetch products: ' . $e->getMessage()]);
 }
 ?>
-

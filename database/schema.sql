@@ -1,22 +1,26 @@
-    USE d0421c0b;
-     
-    -- Disable foreign key checks temporarily
-    SET FOREIGN_KEY_CHECKS = 0;
-     
-    -- Drop the tables if they exist
-    DROP TABLE IF EXISTS products;
-    DROP TABLE IF EXISTS users;
-    DROP TABLE IF EXISTS wishlist;    
+USE d0421c0b;
 
+-- Disable foreign key checks temporarily
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Drop the tables if they exist
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS wishlist;
+
+-- Create the products table
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
+    image VARCHAR(255) DEFAULT 'default.jpg',
     category VARCHAR(255),
     price DECIMAL(10, 2) NOT NULL,
-    availability INT DEFAULT 0,
-    discount DECIMAL(5, 2) DEFAULT 0.00
+    discount INT DEFAULT 0,
+    online_verfügbar ENUM('ja', 'nein') DEFAULT 'nein'
 );
 
+
+-- Create the users table
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -24,6 +28,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
+-- Create the wishlist table
 CREATE TABLE wishlist (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -31,3 +36,6 @@ CREATE TABLE wishlist (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+-- Re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;

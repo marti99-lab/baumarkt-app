@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const productCard = document.createElement("div");
                     productCard.className = "product-card";
                     productCard.innerHTML = `
+                        <img src="assets/images/${product.image}" alt="${product.name}" class="product-image">
                         <h4>${product.name}</h4>
                         <p>Preis: ${product.price}€</p>
                         <p>Verfügbarkeit: ${product.availability}</p>

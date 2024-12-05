@@ -16,6 +16,7 @@ Anforderungen für den Baumarkt-Shop
   Backend: PHP for server-side logic and API integration.
   Datenbank: MySQL for data storage and retrieval.
   Styling: CSS and Bootstrap for a responsive and visually appealing design.
+  Images... von https://pixabay.com/de/
 
 # app structur
 ```

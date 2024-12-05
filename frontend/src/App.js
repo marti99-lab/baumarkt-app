@@ -8,7 +8,7 @@ function App() {
 
     // Fetch products from the backend
     useEffect(() => {
-        fetch("http://localhost/backend/api/products.php") // Update URL if needed
+        fetch("http://localhost/baumarkt-app/backend/api/products.php") // Update URL if needed
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch products");
@@ -64,6 +64,11 @@ function App() {
                         <div className="product-list">
                             {filteredProducts.map((product) => (
                                 <div className="product-card" key={product.id}>
+                                    <img
+                                        src={`assets/images/${product.image}`}
+                                        alt={product.name}
+                                        className="product-image"
+                                    />
                                     <h3>{product.name}</h3>
                                     <p>Kategorie: {product.category}</p>
                                     <p>Preis: {product.price}€</p>
@@ -119,3 +124,4 @@ function App() {
 }
 
 export default App;
+
