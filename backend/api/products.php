@@ -3,23 +3,37 @@ header('Content-Type: application/json');
 require_once '../config/db.php';
 
 $category = $_GET['category'] ?? null;
+$id = $_GET['id'] ?? null;
 
 try {
-    if ($category) {
+    if ($id) {
+        // Fetch a single product by ID
+        $stmt = $pdo->prepare("SELECT id, name, image, category, price, availability, discount, online_verfügbar FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($product) {
+            echo json_encode($product);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Product not found']);
+        }
+    } elseif ($category) {
         // Fetch products for the specified category
-        $stmt = $pdo->prepare("SELECT name, image, category, price, availability, discount FROM products WHERE category = ?");
+        $stmt = $pdo->prepare("SELECT id, name, image, category, price, availability, discount, online_verfügbar FROM products WHERE category = ?");
         $stmt->execute([$category]);
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($products);
     } else {
         // Fetch all products
-        $stmt = $pdo->query("SELECT name, image, category, price, availability, discount FROM products");
+        $stmt = $pdo->query("SELECT id, name, image, category, price, availability, discount, online_verfügbar FROM products");
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($products);
     }
-
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Ensure valid JSON output
-    echo json_encode($products);
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Failed to fetch products: ' . $e->getMessage()]);
 }
+
 ?>
+

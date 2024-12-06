@@ -13,8 +13,9 @@
         <nav>
             <ul>
                 <li><a href="./#produkte">Produkte</a></li>
-                <li><a href="./#wunschliste">Wunschliste</a></li>
-                <li><a href="./#rabatte">Rabattaktionen</a></li>
+                <li><a href="./#rabatte" id="rabatt-link">Rabattaktionen</a></li>
+                <li><a href="./#register">Register (in Arbeit!)</a></li>
+                <li><a href="https://learn-it-bonn.de/">Zurück zur Hauptseite</a></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +36,15 @@
             <div id="product-list"></div>
         </section>
     </main>
+    <div id="rabatt-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Tolle Rabattaktionen mit 25% !</h2>
+            <div id="rabatt-list">
+                <!-- This will be dynamically populated -->
+            </div>
+        </div>
+    </div>    
     <footer>
         <p>&copy; 2024 Martin Rübner. All rights reserved.</p>
     </footer>

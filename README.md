@@ -33,7 +33,8 @@ baumarkt-app/
 │   │           └── scripts.js
 │   └── src/
 │       ├── App.js
-│       └── index.js
+│       ├── index.js
+│       └── ProductDetails.js
 ├── database/
 │       ├── insert_products.sql
 │       └── schema.sql
