@@ -25,11 +25,15 @@ baumarkt-app/
 ├── frontend/
 │   ├── public/
 │   │   ├── index.html
+│   │   ├── register.html
 │   │   └── assets/
 │   │       ├── css/
 │   │       │   └── styles.css
 │   │       ├── images/
+│   │       ├── fonts/ 
 │   │       └── js/
+│   │           ├── register.js 
+│   │           ├── login.js    
 │   │           └── scripts.js
 │   └── src/
 │       ├── App.js
@@ -40,7 +44,8 @@ baumarkt-app/
 │       └── schema.sql
 └── backend/
     ├── api/
-    │   └── products.php
+    │   ├── products.php
+    │   └── register.php
     ├── config/
     │   └── db.php
     ├── controllers/
