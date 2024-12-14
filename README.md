@@ -26,6 +26,8 @@ baumarkt-app/
 │   ├── public/
 │   │   ├── index.html
 │   │   ├── register.html
+│   │   ├── components/
+│   │   │        └── header.php, footer.php
 │   │   └── assets/
 │   │       ├── css/
 │   │       │   └── styles.css
@@ -40,12 +42,10 @@ baumarkt-app/
 │       ├── index.js
 │       └── ProductDetails.js
 ├── database/
-│       ├── insert_products.sql
-│       └── schema.sql
+│       └── insert_products.sql, schema.sql
 └── backend/
     ├── api/
-    │   ├── products.php
-    │   └── register.php
+    │   └── products.php, register.php
     ├── config/
     │   └── db.php
     ├── controllers/
