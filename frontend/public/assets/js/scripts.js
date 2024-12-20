@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
 
                     productCard.addEventListener("click", () => {
-                        window.location.href = `${baseUrl}/baumarkt-app/frontend/public/product-detail.html?id=${product.id}`;
+                        window.location.href = `${baseUrl}/baumarkt-app/frontend/public/product-detail.php?id=${product.id}`;
                     });
 
                     productList.appendChild(productCard);
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         productElement.innerHTML = `
                             <img src="assets/images/${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
-                            <a href="product-detail.html?id=${product.id}" style="text-decoration: none; color: #0069d9;">
+                            <a href="product-detail.php?id=${product.id}" style="text-decoration: none; color: #0069d9;">
                                 ${product.name}
                             </a>
                         `;

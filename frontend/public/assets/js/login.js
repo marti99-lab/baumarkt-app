@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageDiv.textContent = result;
                 messageDiv.style.color = 'green';
                 setTimeout(() => {
-                    window.location.href = 'index.html'; // Weiterleitung nach Login
+                    window.location.href = 'index.php'; // Weiterleitung nach Login
                 }, 1000);
             } else {
                 messageDiv.textContent = result;

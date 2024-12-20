@@ -27,7 +27,7 @@ if (isUserLoggedIn()) {
                 <button type="submit">Registrieren</button>
             </form>
             <div id="message"></div>
-            <p>Haben Sie schon ein Konto? <a href="login.html">Hier anmelden</a>.</p>
+            <p>Haben Sie schon ein Konto? <a href="login.php">Hier anmelden</a>.</p>
         </section>
     </main>
     <?php include '../includes/footer.php'; ?>

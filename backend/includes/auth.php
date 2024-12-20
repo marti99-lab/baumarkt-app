@@ -13,6 +13,6 @@ function getLoggedInUser() {
 function logoutUser() {
     session_unset();
     session_destroy();
-    redirect('login.html');
+    redirect('login.php');
 }
 ?>

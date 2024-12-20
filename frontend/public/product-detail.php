@@ -1,3 +1,8 @@
+<?php
+$pageTitle = "Produktdetails"; 
+include "../../components/header.php";
+include "../../components/footer.php";
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,9 +17,9 @@
         <h1>Ihr Fix & Fertig Baumarkt – Lösungen für Haus & Garten!</h1>
         <nav>
             <ul>
-                <li><a href="index.html#produkte">Produkte</a></li>
-                <li><a href="index.html#rabatte">Rabattaktionen</a></li>
-                <li><a href="index.html#register">Register (in Arbeit!)</a></li>
+                <li><a href="index.php#produkte">Produkte</a></li>
+                <li><a href="index.php#rabatte">Rabattaktionen</a></li>
+                <li><a href="index.php#register">Register (in Arbeit!)</a></li>
                 <li><a href="https://learn-it-bonn.de/">Zurück zur Hauptseite</a></li>
             </ul>
         </nav>
@@ -22,7 +27,10 @@
     <main>
         <button id="back-button">Zurück</button>
         <section id="product-detail">
-            <!-- Product details will load here dynamically -->
+            <?php
+            // Placeholder for dynamic product details
+            echo '<!-- Product details will load here dynamically -->';
+            ?>
         </section>
     </main>
     <footer>

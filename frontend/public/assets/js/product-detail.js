@@ -47,6 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Back button functionality
     backButton.addEventListener("click", () => {
-        window.location.href = "index.html"; // Redirect to main page
+        window.location.href = "index.php"; // Redirect to main page
     });
 });
