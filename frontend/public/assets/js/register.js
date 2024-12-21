@@ -3,33 +3,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDiv = document.getElementById('message');
 
     registerForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Verhindere standardmäßiges Verhalten
+        event.preventDefault(); // Prevent default form submission
 
         const formData = new FormData(registerForm);
 
         try {
-            const response = await fetch('/baumarkt-app/backend/api/register_api.php', {
+            const response = await fetch('/baumarkt-app/backend/api/api-register.php', {
                 method: 'POST',
                 body: formData,
             });
 
-            const result = await response.text();
-            console.log('Antwort:', result);
+            const result = await response.json();
 
             if (response.ok) {
-                messageDiv.textContent = result;
+                // Success feedback
+                messageDiv.textContent = result.message;
                 messageDiv.style.color = 'green';
-                registerForm.reset();
+
+                // Redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = '/baumarkt-app/frontend/public/login-page.php';
+                }, 2000); // 2-second delay
             } else {
-                messageDiv.textContent = result;
+                // Error feedback
+                messageDiv.textContent = result.message;
                 messageDiv.style.color = 'red';
             }
         } catch (error) {
-            console.error('Fehler:', error);
-            messageDiv.textContent = 'Fehler beim Senden der Anfrage.';
+            // Handle unexpected errors
+            console.error('Error:', error);
+            messageDiv.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
             messageDiv.style.color = 'red';
         }
     });
 });
-
-

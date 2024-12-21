@@ -24,8 +24,7 @@ baumarkt-app/
 │
 ├── frontend/
 │   ├── public/
-│   │   ├── index.html
-│   │   ├── register.html
+│   │   ├── index.php, login-page.php, product-detail.php, register-page.php
 │   │   ├── components/
 │   │   │        └── header.php, footer.php
 │   │   └── assets/
@@ -33,24 +32,23 @@ baumarkt-app/
 │   │       │   └── styles.css
 │   │       ├── images/
 │   │       ├── fonts/ 
-│   │       └── js/
-│   │           ├── register.js 
-│   │           ├── login.js    
-│   │           └── scripts.js
+│   │       └── js/  
+│   │           └── login.js, product-details.js, register.js, scripts.js
 │   └── src/
-│       ├── App.js
-│       ├── index.js
-│       └── ProductDetails.js
+│       └── App.js, index.js, ProductDetails.js
 ├── database/
 │       └── insert_products.sql, schema.sql
 └── backend/
     ├── api/
-    │   └── products.php, register.php
+    │   └── products.php, api-register.php, login-handler.php, login_api
     ├── config/
-    │   └── db.php
+    │   └── db.php, includes.php
     ├── controllers/
     │   └── ProductController.php
+    ├── includes/
+    │   └── auth.php, footer.php, header.php
     ├── models/
     │   └── Product.php
-    └── api/
+    └── views/
         └── index.php
+  
