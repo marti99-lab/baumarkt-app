@@ -14,10 +14,12 @@ CREATE TABLE products (
     name VARCHAR(255) NOT NULL,
     image VARCHAR(255) DEFAULT 'default.jpg',
     category VARCHAR(255),
+    beschreibung TEXT,
     price DECIMAL(10, 2) NOT NULL,
     discount INT DEFAULT 0,
     online_verfügbar ENUM('ja', 'nein') DEFAULT 'nein'
 );
+
 
 
 -- Create the users table

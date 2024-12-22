@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get("id"); // Get product ID from query params
+    const productId = urlParams.get("id");
     const apiUrl = `${window.location.origin}/baumarkt-app/backend/api/products.php?id=${productId}`;
-    const productDetailSection = document.getElementById("product-detail");
-    const backButton = document.getElementById("back-button");
+    
+    // DOM elements
+    const productTitle = document.getElementById("product-title");
+    const productImage = document.getElementById("product-image");
+    const productCategory = document.getElementById("product-category");
+    const productDescription = document.getElementById("product-description");
+    const availability = document.getElementById("availability");
+    const deliveryTime = document.getElementById("delivery-time");
+    const shippingInfo = document.getElementById("shipping-info");
+    const discountInfo = document.getElementById("discount-info");
+    const additionalText = document.getElementById("additional-text");
 
-    // If no product ID is provided, display an error
     if (!productId) {
-        productDetailSection.innerHTML = `<p>Produkt-ID fehlt!</p>`;
+        productTitle.innerText = "Produkt-ID fehlt!";
         return;
     }
 
-    // Fetch product details by ID
+    // Fetch product details from API
     fetch(apiUrl)
         .then((response) => {
             if (!response.ok) {
@@ -20,33 +28,63 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then((product) => {
-            // Render product details
-            productDetailSection.innerHTML = `
-                <h1>${product.name}</h1>
-                <img
-                    src="assets/images/${product.image}"
-                    alt="${product.name}"
-                    style="width: 300px; height: 300px; object-fit: cover; display: block; margin: 20px auto;"
-                />
-                <p><strong>Kategorie:</strong> ${product.category}</p>
-                <p><strong>Preis:</strong> ${product.price}€</p>
-                <p><strong>Verfügbarkeit:</strong> ${product.availability}</p>
-                <p style="color: ${product.online_verfügbar === "ja" ? "green" : "red"}">
-                    ${product.online_verfügbar === "ja" ? "Online verfügbar" : "Online nicht verfügbar"}
-                </p>
-                ${
-                    product.discount > 0
-                        ? `<p><strong>Rabatt:</strong> ${product.discount}%</p>`
-                        : ""
-                }
-            `;
+            // Populate product details dynamically
+            productTitle.innerText = product.name;
+            productImage.src = `assets/images/${product.image}`;
+            productImage.alt = product.name;
+            productCategory.innerText = product.category;
+            productDescription.innerText = `Kategorie: ${product.category}`;
+            availability.innerText = `Verfügbarkeit: ${product.availability}`;
+            deliveryTime.innerText = "Lieferzeit ca.: 3-4 Wochen"; // Static info
+            shippingInfo.innerText = "Versandkostenfrei"; // Static info
+
+            if (product.discount > 0) {
+                discountInfo.innerText = `Rabatt: ${product.discount}%`;
+            } else {
+                discountInfo.style.display = "none";
+            }
+
+            // Additional description
+            additionalText.innerText = product.beschreibung || "Keine weiteren Informationen verfügbar.";
         })
         .catch((error) => {
-            productDetailSection.innerHTML = `<p>Fehler: ${error.message}</p>`;
+            productTitle.innerText = `Fehler: ${error.message}`;
+            additionalText.innerText = "Bitte versuchen Sie es später erneut.";
+            productImage.style.display = "none";
         });
 
     // Back button functionality
-    backButton.addEventListener("click", () => {
-        window.location.href = "index.php"; // Redirect to main page
-    });
+    const backButton = document.getElementById("back-button");
+    if (backButton) {
+        backButton.addEventListener("click", () => {
+            window.location.href = "index.php";
+        });
+    }
+
+    // Quantity control
+    window.decreaseQuantity = function () {
+        const quantityInput = document.getElementById("quantity");
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    };
+
+    window.increaseQuantity = function () {
+        const quantityInput = document.getElementById("quantity");
+        let currentValue = parseInt(quantityInput.value);
+        const maxValue = parseInt(quantityInput.max);
+        if (currentValue < maxValue) {
+            quantityInput.value = currentValue + 1;
+        }
+    };
+
+    window.updateQuantity = function () {
+        const quantityInput = document.getElementById("quantity");
+        if (parseInt(quantityInput.value) > parseInt(quantityInput.max)) {
+            quantityInput.value = quantityInput.max;
+        } else if (parseInt(quantityInput.value) < parseInt(quantityInput.min)) {
+            quantityInput.value = quantityInput.min;
+        }
+    };
 });
