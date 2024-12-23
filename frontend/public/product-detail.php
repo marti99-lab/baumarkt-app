@@ -8,8 +8,8 @@ include "components/header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $pageTitle; ?></title>
-    <link rel="stylesheet" href="assets/css/product-detail.css">
-    <script defer src="assets/js/product-detail.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="assets/js/product-view.js"></script>
 </head>
 <body>
     <main>

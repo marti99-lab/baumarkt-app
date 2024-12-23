@@ -8,7 +8,7 @@ function App() {
 
     // Fetch products from the backend
     useEffect(() => {
-        fetch("http://localhost/baumarkt-app/backend/api/products.php")
+        fetch("/backend/api/products.php")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch products");
