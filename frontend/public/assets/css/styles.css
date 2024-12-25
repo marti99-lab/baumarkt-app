@@ -171,9 +171,15 @@ nav ul li a:hover {
     justify-content: center;
 } 
 
+#product-detail {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
 .product-details {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    flex: 1 1 100%;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     color: #000;
@@ -199,6 +205,7 @@ nav ul li a:hover {
 }
 
 .product-image {
+    flex: 1;
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -207,17 +214,17 @@ nav ul li a:hover {
     border: 2px solid #004a9e;
     border-radius: 8px;
     margin-bottom: 10px;
-    /* flex: 1;
-    text-align: center; */
+    text-align: center;
 }
 
-.product-image img {
-    max-width: 100%;
+#product-detail .product-details img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
     height: auto;
-    width: 300px; 
-    max-height: 300px;
     border: 2px solid #004a9e;
     border-radius: 8px;
+    margin: 20px;
     object-fit: cover; 
 }
 
@@ -239,22 +246,50 @@ nav ul li a:hover {
 }
 
 .product-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     gap: 20px;
-    align-items: flex-start; 
-    max-width: 1200px;
-    margin: 20px auto;
-    text-align: left; 
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .additional-info {
     margin-top: 40px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); 
+    background: #fff; 
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     color: #000;
+}
+
+.btn-back,
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #004a9e;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 10px;
+}
+
+.btn-back:hover,
+.btn:hover {
+    background-color: #003570;
+    transform: scale(1.05);
+}
+
+.btn-back:active,
+.btn:active {
+    background-color: #002244;
+    transform: scale(0.95);
 }
 
 footer {

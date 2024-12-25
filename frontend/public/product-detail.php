@@ -13,13 +13,11 @@ include "components/header.php";
 </head>
 <body>
     <main>
-        <button id="back-button">Zurück</button>
+        <button class="btn-back" id="back-button">Zurück</button>
         <section id="product-detail">
             <div class="product-container">
-                <div class="product-image">
-                    <img id="product-image" src="assets/images/placeholder.jpg" alt="Produktbild">
-                </div>
                 <div class="product-details">
+                    <img id="product-image" src="assets/images/placeholder.jpg" alt="Produktbild">
                     <h2 id="product-title">Produktname</h2>
                     <p id="product-description">Kategorie: <span id="product-category"></span></p>
                     <p id="availability"></p>
