@@ -9,7 +9,7 @@ try {
     if ($id) {
         // Fetch a single product by ID
         $stmt = $conn->prepare("
-            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar 
+            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar, lieferzeit
             FROM products 
             WHERE id = ?
         ");
@@ -25,7 +25,7 @@ try {
     } elseif ($category) {
         // Fetch products for the specified category
         $stmt = $conn->prepare("
-            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar 
+            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar, lieferzeit 
             FROM products 
             WHERE category = ?
         ");
@@ -35,7 +35,7 @@ try {
     } else {
         // Fetch all products
         $stmt = $conn->query("
-            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar 
+            SELECT id, name, image, category, beschreibung, price, availability, discount, online_verfügbar, lieferzeit 
             FROM products
         ");
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);

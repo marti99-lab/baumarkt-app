@@ -25,6 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const discountInfo = document.getElementById("discount-info");
     const additionalText = document.getElementById("additional-text");
 
+        // Versandkostenberechnung
+        function calculateShippingCost(price) {
+            // Versandkosten-Logik
+            if (price > 50) {
+                return "Versandkostenfrei";
+            } else {
+                return "Versandkosten: 3.50 €";
+            }
+        }
+
     // Fetch product details from API
     fetch(apiUrl)
         .then((response) => {
@@ -36,13 +46,21 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((product) => {
             // Populate product details dynamically
             productTitle.innerText = product.name;
-            productImage.src = `${baseUrl}/frontend/public/assets/images/${product.image}`;
+            productImage.src = `${baseUrl}/frontend/assets/images/${product.image}`;
             productImage.alt = product.name;
             productCategory.innerText = product.category;
-            productDescription.innerText = `Kategorie: ${product.category}`;
+            productDescription.innerText = `Preis: ${product.price} €`;
+            deliveryTime.innerText = `Lieferzeit ${product.lieferzeit}`;
             availability.innerText = `Verfügbarkeit: ${product.availability}`;
-            deliveryTime.innerText = "Lieferzeit ca.: 3-4 Wochen"; // Static info
-            shippingInfo.innerText = "Versandkostenfrei"; // Static info
+        // Versandkosten berechnen und anzeigen
+        const shippingCost = calculateShippingCost(product.price);
+        shippingInfo.innerText = shippingCost; // Hier wird das Ergebnis von calculateShippingCost eingefügt
+
+        if (product.discount > 0) {
+            discountInfo.innerText = `Rabatt: ${product.discount}%`;
+        } else {
+            discountInfo.style.display = "none";
+        }
 
             if (product.discount > 0) {
                 discountInfo.innerText = `Rabatt: ${product.discount}%`;
@@ -66,35 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
             window.history.back();
         });
     }
-
-    // Quantity control functions
-    window.decreaseQuantity = function () {
-        const quantityInput = document.getElementById("quantity");
-        let currentValue = parseInt(quantityInput.value, 10);
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    };
-
-    window.increaseQuantity = function () {
-        const quantityInput = document.getElementById("quantity");
-        let currentValue = parseInt(quantityInput.value, 10);
-        const maxValue = parseInt(quantityInput.max, 10);
-        if (currentValue < maxValue) {
-            quantityInput.value = currentValue + 1;
-        }
-    };
-
-    window.updateQuantity = function () {
-        const quantityInput = document.getElementById("quantity");
-        const maxValue = parseInt(quantityInput.max, 10);
-        const minValue = parseInt(quantityInput.min, 10);
-        const currentValue = parseInt(quantityInput.value, 10);
-
-        if (currentValue > maxValue) {
-            quantityInput.value = maxValue;
-        } else if (currentValue < minValue) {
-            quantityInput.value = minValue;
-        }
-    };
 });

@@ -1,1 +1,0 @@
-<!DOCTYPE html><html><head><title>Baumarkt Backend</title></head><body><h1>Backend API</h1></body></html>

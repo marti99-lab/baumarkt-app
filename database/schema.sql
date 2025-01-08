@@ -17,7 +17,8 @@ CREATE TABLE products (
     beschreibung TEXT,
     price DECIMAL(10, 2) NOT NULL,
     discount INT DEFAULT 0,
-    online_verfügbar ENUM('ja', 'nein') DEFAULT 'nein'
+    online_verfügbar ENUM('ja', 'nein') DEFAULT 'nein',
+    lieferzeit VARCHAR(255) DEFAULT 'nicht verfügbar'
 );
 
 

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Redirect after a short delay
                 setTimeout(() => {
-                    window.location.href = '/baumarkt-app/frontend/public/login-page.php';
+                    window.location.href = '/baumarkt-app/frontend/login-page.php';
                 }, 2000); // 2-second delay
             } else {
                 // Error feedback

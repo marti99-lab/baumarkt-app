@@ -1,6 +1,6 @@
 <?php
-$pageTitle = "Produktdetails"; 
-include "components/header.php"; 
+$pageTitle = "Produktdetails";
+include "components/header.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -21,8 +21,8 @@ include "components/header.php";
                     <h2 id="product-title">Produktname</h2>
                     <p id="product-description">Kategorie: <span id="product-category"></span></p>
                     <p id="availability"></p>
-                    <p id="delivery-time">Lieferzeit ca.: 1 Woche</p>
-                    <p id="shipping-info">Versandkostenfrei</p>
+                    <p id="delivery-time"></p>
+                    <p id="shipping-info"></p>
                     <p id="discount-info"></p>
                     <button class="btn" id="online-order">Online bestellen</button>
                     <button class="btn" id="reserve-pickup">Reservieren & Abholen</button>

@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
 
                     productCard.addEventListener("click", () => {
-                        window.location.href = `${baseUrl}/frontend/public/product-detail.php?id=${product.id}`;
+                        window.location.href = `${baseUrl}/frontend/product-detail.php?id=${product.id}`;
                     });
 
                     productList.appendChild(productCard);
